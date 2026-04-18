@@ -62,9 +62,25 @@ fun SettingsScreen() {
         
         Divider(Modifier.padding(vertical = 16.dp))
         
-        Text("About", style = MaterialTheme.typography.titleMedium)
-        Text("Version 1.0 - Smart Nutrition Calculator", style = MaterialTheme.typography.bodyMedium)
-        Text("Locally persists data via Room Database. Unofficial application.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text("About & Web", style = MaterialTheme.typography.titleMedium)
+        
+        Spacer(Modifier.height(16.dp))
+        Card(
+            modifier = Modifier.fillMaxWidth().clickable {
+                val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse("https://chipotlenutritioncalculator.ai/"))
+                context.startActivity(intent)
+            },
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
+        ) {
+            Column(Modifier.padding(16.dp)) {
+                Text("Visit Official Website", style = MaterialTheme.typography.titleMedium, fontWeight = androidx.compose.ui.text.font.FontWeight.Bold, color = MaterialTheme.colorScheme.primary)
+                Text("chipotlenutritioncalculator.ai", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
+        
+        Spacer(Modifier.height(16.dp))
+        Text("Version 2.0 - Premium Edition", style = MaterialTheme.typography.bodyMedium)
+        Text("Not affiliated with Chipotle. Local persistent state architecture.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }
 
