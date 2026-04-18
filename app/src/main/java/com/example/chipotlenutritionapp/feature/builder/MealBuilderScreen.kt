@@ -86,7 +86,14 @@ fun BuilderGrid(ingredients: List<IngredientEntity>, selected: Set<IngredientEnt
         modifier = Modifier.fillMaxSize()
     ) {
         item(span = { GridItemSpan(maxLineSpan) }) {
-            Column(modifier = Modifier.padding(vertical = 16.dp)) {
+            Column(modifier = Modifier.padding(bottom = 16.dp)) {
+                androidx.compose.foundation.Image(
+                    painter = androidx.compose.ui.res.painterResource(id = com.example.chipotlenutritionapp.R.drawable.header_bowl),
+                    contentDescription = "Fresh Bowl",
+                    modifier = Modifier.fillMaxWidth().height(200.dp).clip(RoundedCornerShape(16.dp)),
+                    contentScale = androidx.compose.ui.layout.ContentScale.Crop
+                )
+                Spacer(Modifier.height(16.dp))
                 Text(
                     "Craft Your Masterpiece", 
                     style = MaterialTheme.typography.headlineLarge,
