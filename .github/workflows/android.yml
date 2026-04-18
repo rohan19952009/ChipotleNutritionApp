@@ -24,8 +24,17 @@ jobs:
       with:
         gradle-version: '8.4'
 
-    - name: Build with Gradle
+    - name: Build APK (for local testing)
+      run: gradle assembleDebug --no-daemon
+
+    - name: Build App Bundle (for Play Store)
       run: gradle bundleRelease --no-daemon
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug
+        path: app/build/outputs/apk/debug/app-debug.apk
 
     - name: Upload App Bundle
       uses: actions/upload-artifact@v4
